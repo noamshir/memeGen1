@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/fonts/fontawesome-free-6.0.0-beta3-web/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Meme Generator</title>
+  </head>
+  <body onload="init()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    <header>
+      <div class="header-top">
+        <div class="header-content flex space-between">
+          <div class="logo-img">
+            <img class="logo" src="img/LOGO.png" alt="" />
+          </div>
+          <nav>
+            <ul class="main-nav flex clean-list">
+              <li><a href="#" onclick="init()">Gallery</a></li>
+              <li><a href="#" onclick="initSavedMemes()">Memes</a></li>
+              <li><a href="#" onclick="init()">Home</a></li>
+            </ul>
+          </nav>
+          <button class="btn-menu" onclick="toggleMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+    <div class="header-buttom">
+      <div class="header-content flex align-center">
+        <div class="filter-div">
+          <input list="filters" oninput="setFilter(value)" />
+          <datalist id="filters">
+            <option value="celebs"></option>
+            <option value="funny"></option>
+            <option value="baby"></option>
+            <option value="animals"></option>
+            <option value="cute"></option>
+          </datalist>
+          <button class="btn-filter">🔍</button>
+        </div>
+      </div>
+    </div>
+    <section class="section-gallery main-layout grid"></section>
+    <section class="section-editor main-layout flex-column space-between close">
+      <div class="canvas-container">
+        <canvas id="meme-canvas" height="200px" width="200px"></canvas>
+      </div>
+      <div class="editor-layout flex-column">
+        <textarea
+          oninput="onLineChange(value)"
+          name="line-text"
+          id="line-text"
+          placeholder="Enter Text"
+          value="Enter Text"
+        ></textarea>
+        <div class="line-text-update-btns">
+          <button onclick="changeLine()" class="change-line-btn">↑↓</button>
+          <button onclick="addLine()" class="fa fa-plus"></button>
+          <button
+            onclick="onDeleteLine()"
+            class="delete-btn fa fa-trash"
+          ></button>
+        </div>
+        <div class="line-text-styles-btns">
+          <button onclick="changeFontSize(2)">A+</button>
+          <button onclick="changeFontSize(-2)">A-</button>
+          <input
+            type="color"
+            id="change-text-color"
+            class="change-color"
+            onchange="onColorChange(value)"
+          />
+          <button
+            class="btn-color fa fa-palette"
+            onclick="onOpenColorPalette()"
+          ></button>
+          <div class="allign-text-btns">
+            <button
+              onclick="onSetTextAliignment('left')"
+              class="fa fa-align-left"
+            ></button>
+            <button
+              onclick="onSetTextAliignment('center')"
+              class="fa fa-align-center"
+            ></button>
+            <button
+              onclick="onSetTextAliignment('right')"
+              class="fa fa-align-right"
+            ></button>
+          </div>
+          <select
+            name="select-font"
+            id="select-font"
+            onchange="onSetFontStyle(value)"
+          >
+            <option value="Impact">Impact</option>
+            <option value="Ariel">Ariel</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman">Times New Roman</option>
+          </select>
+          <a
+            href="#"
+            onclick="onDownload(this)"
+            download=""
+            class="download-link fa fa-download"
+          ></a>
+          <button onclick="onSave()" class="btn-save">Save</button>
+          <button class="btn-share">Share</button>
+        </div>
+        <div class="stickers-container">
+          <ul class="flex clean-list">
+            <li class="sticker" onclick="putSticker('😀')">😀</li>
+            <li class="sticker" onclick="putSticker('😎')">😎</li>
+            <li class="sticker" onclick="putSticker('🥸')">🥸</li>
+            <li class="sticker" onclick="putSticker('🤪')">🤪</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/services/storage.services.js"></script>
+    <script src="js/controller.gallery.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/controller.meme.js"></script>
+  </body>
+</html>
