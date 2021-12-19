@@ -5,8 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="fonts/favicon_io (1)/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="fonts/favicon_io (1)/favicon-16x16.png"
+    />
+    <link
       rel="stylesheet"
-      href="/fonts/fontawesome-free-6.0.0-beta3-web/css/all.css"
+      href="fonts/fontawesome-free-6.0.0-beta3-web/css/all.css"
     />
     <link
       rel="stylesheet"
@@ -17,6 +29,16 @@
   </head>
   <body onload="init()">
     <div class="main-screen" onclick="toggleMenu()"></div>
+    <div class="facebook-share-modal close"></div>
+    <div class="upload-modal close">
+      <button class="close-upload-btn" onclick="closeUploadModal()">❌</button>
+      <input
+        type="file"
+        class="file-input-btn"
+        name="image"
+        onchange="onImgInput(event)"
+      />
+    </div>
     <header>
       <div class="header-top">
         <div class="header-content flex space-between">
@@ -25,9 +47,21 @@
           </div>
           <nav>
             <ul class="main-nav flex clean-list">
-              <li><a href="#" onclick="init()">Gallery</a></li>
-              <li><a href="#" onclick="initSavedMemes()">Memes</a></li>
-              <li><a href="#" onclick="init()">Home</a></li>
+              <li>
+                <a class="gallery-a current" href="#" onclick="init()"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a class="memes-saved-a" href="#" onclick="initSavedMemes()"
+                  >Memes</a
+                >
+              </li>
+              <li>
+                <a class="upload-photo-a" href="#" onclick="onUploadPhoto()"
+                  >Upload Photo</a
+                >
+              </li>
             </ul>
           </nav>
           <button class="btn-menu" onclick="toggleMenu()">☰</button>
@@ -35,8 +69,8 @@
       </div>
     </header>
     <div class="header-buttom">
-      <div class="header-content flex align-center">
-        <div class="filter-div">
+      <div class="header-buttom-layout header-content flex align-center">
+        <div class="filter-div flex">
           <input list="filters" oninput="setFilter(value)" />
           <datalist id="filters">
             <option value="celebs"></option>
@@ -47,9 +81,27 @@
           </datalist>
           <button class="btn-filter">🔍</button>
         </div>
+        <div class="keyWords-div flex space-between"></div>
       </div>
     </div>
     <section class="section-gallery main-layout grid"></section>
+    <div class="about-me-layout flex">
+      <div class="my-img"><img src="img/my-photo.JPG" alt="My Image" /></div>
+      <div class="aside-img">
+        <h3>Noam Shir Melzer</h3>
+        <p>
+          Hello My name is Noam, i'm a learning full-stack developer at Coding
+          Academy. I love computers and have been programing for 5 years. My
+          skills sets includes Java, C#, Python, Js, Css, Html and application
+          development with Android Studio.
+        </p>
+        <div class="social-btns">
+          <button class="fa fa-facebook"></button>
+          <button class="fa fa-twitter"></button>
+          <button class="fa fa-instagram"></button>
+        </div>
+      </div>
+    </div>
     <section class="section-editor main-layout flex-column space-between close">
       <div class="canvas-container">
         <canvas id="meme-canvas" height="200px" width="200px"></canvas>
@@ -114,7 +166,7 @@
             class="download-link fa fa-download"
           ></a>
           <button onclick="onSave()" class="btn-save">Save</button>
-          <button class="btn-share">Share</button>
+          <button class="btn-share" onclick="onShare()">Share</button>
         </div>
         <div class="stickers-container">
           <ul class="flex clean-list">
@@ -126,8 +178,13 @@
         </div>
       </div>
     </section>
+    <footer class="footer flex">
+      <img class="logo" src="img/LOGO.png" alt="Logo" />
+      <p>All Rights Reserverd 2021 &copy;</p>
+    </footer>
 
     <script src="js/services/storage.services.js"></script>
+    <script src="js/services/upload.service.js"></script>
     <script src="js/controller.gallery.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/controller.meme.js"></script>

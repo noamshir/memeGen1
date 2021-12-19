@@ -1,25 +1,79 @@
 "use strict";
-var gKeywordSearchCountMap = { funny: 0, cat: 0, baby: 0, celebs: 0 };
+var gKeywordSearchCountMap = {
+  funny: 10,
+  animals: 7,
+  baby: 7,
+  celebs: 15,
+  cute: 9,
+};
+// var gImgs = [
+//   { id: 0, url: "img/meme-images/1.jpg", keywords: ["celebs", "funny"] },
+//   { id: 1, url: "img/meme-images/2.jpg", keywords: ["animals", "cute"] },
+//   { id: 2, url: "img/meme-images/3.jpg", keywords: ["animals", "baby"] },
+//   { id: 3, url: "img/meme-images/4.jpg", keywords: ["animal", "cute"] },
+//   { id: 4, url: "img/meme-images/5.jpg", keywords: ["baby", "funny"] },
+//   { id: 5, url: "img/meme-images/6.jpg", keywords: ["celebs", "funny"] },
+//   { id: 6, url: "img/meme-images/7.jpg", keywords: ["baby", "funny", "cute"] },
+//   { id: 7, url: "img/meme-images/8.jpg", keywords: ["celebs", "funny"] },
+//   { id: 8, url: "img/meme-images/9.jpg", keywords: ["baby", "funny"] },
+//   { id: 9, url: "img/meme-images/10.jpg", keywords: ["celebs", "funny"] },
+//   { id: 10, url: "img/meme-images/11.jpg", keywords: ["celebs", "funny"] },
+//   { id: 11, url: "img/meme-images/12.jpg", keywords: ["celebs", "funny"] },
+//   { id: 12, url: "img/meme-images/13.jpg", keywords: ["celebs"] },
+//   { id: 13, url: "img/meme-images/14.jpg", keywords: ["celebs"] },
+//   { id: 14, url: "img/meme-images/15.jpg", keywords: ["celebs"] },
+//   { id: 15, url: "img/meme-images/16.jpg", keywords: ["celebs", "funny"] },
+//   { id: 16, url: "img/meme-images/17.jpg", keywords: ["celebs"] },
+//   { id: 17, url: "img/meme-images/18.jpg", keywords: ["cute", "funny"] },
+// ];
+
 var gImgs = [
-  { id: 0, url: "img/meme-images/1.jpg", keywords: ["celebs", "funny"] },
-  { id: 1, url: "img/meme-images/2.jpg", keywords: ["animals", "cute"] },
-  { id: 2, url: "img/meme-images/3.jpg", keywords: ["animals", "baby"] },
-  { id: 3, url: "img/meme-images/4.jpg", keywords: ["animal", "cute"] },
-  { id: 4, url: "img/meme-images/5.jpg", keywords: ["baby", "funny"] },
-  { id: 5, url: "img/meme-images/6.jpg", keywords: ["celebs", "funny"] },
-  { id: 6, url: "img/meme-images/7.jpg", keywords: ["baby", "funny", "cute"] },
-  { id: 7, url: "img/meme-images/8.jpg", keywords: ["celebs", "funny"] },
-  { id: 8, url: "img/meme-images/9.jpg", keywords: ["baby", "funny"] },
-  { id: 9, url: "img/meme-images/10.jpg", keywords: ["celebs", "funny"] },
-  { id: 10, url: "img/meme-images/11.jpg", keywords: ["celebs", "funny"] },
-  { id: 11, url: "img/meme-images/12.jpg", keywords: ["celebs", "funny"] },
-  { id: 12, url: "img/meme-images/13.jpg", keywords: ["celebs"] },
-  { id: 13, url: "img/meme-images/14.jpg", keywords: ["celebs"] },
-  { id: 14, url: "img/meme-images/15.jpg", keywords: ["celebs"] },
-  { id: 15, url: "img/meme-images/16.jpg", keywords: ["celebs", "funny"] },
-  { id: 16, url: "img/meme-images/17.jpg", keywords: ["celeb"] },
-  { id: 17, url: "img/meme-images/18.jpg", keywords: ["cute", "funny"] },
+  { id: 0, url: "img/new-images/2.jpg", keywords: ["celebs"] },
+  { id: 1, url: "img/new-images/003.jpg", keywords: ["celebs", "funny"] },
+  { id: 2, url: "img/new-images/004.jpg", keywords: ["animals", "cute"] },
+  { id: 3, url: "img/new-images/5.jpg", keywords: ["baby", "cute"] },
+  {
+    id: 4,
+    url: "img/new-images/005.jpg",
+    keywords: ["baby", "animals", "cute"],
+  },
+  { id: 5, url: "img/new-images/006.jpg", keywords: ["animals", "cute"] },
+  { id: 6, url: "img/new-images/8.jpg", keywords: ["celelbs", "funny"] },
+  { id: 7, url: "img/meme-images/9.jpg", keywords: ["baby", "funny"] },
+  { id: 8, url: "img/new-images/12.jpg", keywords: ["celebs", "funny"] },
+  { id: 9, url: "img/new-images/19.jpg", keywords: ["celebs", "funny"] },
+  {
+    id: 10,
+    url: "img/new-images/Ancient-Aliens.jpg",
+    keywords: ["celebs", "funny"],
+  },
+  { id: 11, url: "img/new-images/drevil.jpg", keywords: ["funny"] },
+  { id: 12, url: "img/new-images/img5.jpg", keywords: ["baby", "funny"] },
+  { id: 13, url: "img/new-images/img4.jpg", keywords: ["celebs"] },
+  { id: 14, url: "img/new-images/img6.jpg", keywords: ["animals", "funny"] },
+  { id: 15, url: "img/new-images/img11.jpg", keywords: ["celebs"] },
+  { id: 16, url: "img/new-images/img12.jpg", keywords: ["celebs", "funny"] },
+  { id: 17, url: "img/new-images/leo.jpg", keywords: ["celebs"] },
+  { id: 18, url: "img/new-images/meme1.jpg", keywords: ["celebs"] },
+  {
+    id: 19,
+    url: "img/new-images/One-Does-Not-Simply.jpg",
+    keywords: ["celebs"],
+  },
+  {
+    id: 20,
+    url: "img/new-images/Oprah-You-Get-A.jpg",
+    keywords: ["celeb", "funny"],
+  },
+  { id: 21, url: "img/new-images/patrick.jpg", keywords: ["celebs", "funny"] },
+  { id: 22, url: "img/new-images/putin.jpg", keywords: ["celebs"] },
+  {
+    id: 23,
+    url: "img/new-images/X-Everywhere.jpg",
+    keywords: ["celebs", "cute"],
+  },
 ];
+
 var gMeme;
 var gMemes;
 var DB = "memesDB";
@@ -34,13 +88,17 @@ function getImages() {
   return gImgs;
 }
 
+function getKeyWords() {
+  return gKeywordSearchCountMap;
+}
+
 function getMeme() {
   return gMeme;
 }
 
-function createMeme() {
+function createMeme(id = 0) {
   gMeme = {
-    selectedImgId: 0,
+    selectedImgId: id,
     selectedLineIdx: 0,
     selectedSticker: 0,
     lines: [
@@ -97,6 +155,7 @@ function isTextClicked(clickedPos, ctx) {
       var elLineText = document.getElementById("line-text");
       elLineText.value = line.txt;
       flag = true;
+      count++;
       return;
     } else if (
       line.align === "left" &&
@@ -108,6 +167,7 @@ function isTextClicked(clickedPos, ctx) {
       gMeme.selectedLineIdx = count;
       var elLineText = document.getElementById("line-text");
       elLineText.value = line.txt;
+      count++;
       flag = true;
       return;
     } else if (
@@ -121,6 +181,7 @@ function isTextClicked(clickedPos, ctx) {
       var elLineText = document.getElementById("line-text");
       elLineText.value = line.txt;
       flag = true;
+      count++;
       return;
     }
     count++;
@@ -253,6 +314,11 @@ function moveText(dx, dy) {
 function moveSticker(dx, dy) {
   gMeme.stickers[gMeme.selectedSticker].pos.x += dx;
   gMeme.stickers[gMeme.selectedSticker].pos.y += dy;
+}
+
+function updateKeyWords(word) {
+  var count = gKeywordSearchCountMap[word] + 1;
+  gKeywordSearchCountMap[word] = count;
 }
 
 function saveMeme(data) {

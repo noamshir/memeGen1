@@ -14,6 +14,29 @@ a {
   text-decoration: none;
 }
 
+/* FONTS */
+@font-face {
+  font-family: Montserrat-bold;
+  src: url("/fonts/Montserrat/Montserrat-Black.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-light;
+  src: url("/fonts/Montserrat/Montserrat-Light.ttf");
+}
+
+.fa {
+  border: 0px;
+  margin-top: 37px;
+  height: 2.5625rem;
+  width: 2.5625rem;
+  margin-left: 19px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: #ff7f00;
+  border-radius: 5px;
+}
+
 /* LAYOUTS */
 .main-layout {
   max-width: 300px;
@@ -51,15 +74,13 @@ header {
   display: flex;
   height: 100%;
   padding: 20px;
-  justify-content: center;
   align-items: center;
   transition: 0.5s;
-  color: #040a2c;
+  font-family: Montserrat-light;
 }
 
 .header-buttom {
   background-color: #fff;
-  height: 100px;
 }
 
 .btn-menu {
@@ -71,11 +92,35 @@ header {
 }
 
 /* Buttom Header */
+.header-buttom-layout {
+  flex-direction: column;
+}
+
+.filter-div {
+  margin-top: 20px;
+}
 
 .btn-filter {
   background-color: #fff;
   border: 0px;
   font-size: 1.2rem;
+}
+
+.keyWords-div {
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-right: 20px;
+}
+
+.keyWords-div p {
+  margin: 0px;
+  display: inline-block;
+  color: #040a2c;
+  cursor: pointer;
+  font-family: Montserrat-light;
 }
 
 /* Gallery */
@@ -154,9 +199,14 @@ header {
 }
 
 .download-link {
-  width: 50px;
-  background-color: #ff7f00;
+  display: flex;
+  margin: 5px auto;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
   color: black;
+  background-color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
   border-radius: 6px;
@@ -185,22 +235,121 @@ header {
 
 .editor-layout .btn-save {
   width: 60px;
+  background-color: #ff7f00;
 }
 
 .editor-layout .btn-share {
   width: 60px;
+  background-color: #ff7f00;
 }
 
 .canvas-container {
-  height: 200px;
-  width: 200px;
+  width: 100%;
   align-self: center;
-  margin: 10px;
+  margin: 10px auto;
 }
 
 .meme-canvas {
   height: 100%;
   width: 100%;
+}
+
+/* About Me */
+
+.about-me-layout {
+  background-color: #fff;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-me-layout img {
+  margin-top: 20px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid #ff7f00;
+}
+
+.about-me-layout .aside-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.aside-img h3 {
+  margin: 0px;
+  font-family: Montserrat-bold;
+  font-size: 1.4rem;
+}
+
+.aside-img p {
+  font-family: Montserrat-light;
+  font-size: 1.2rem;
+}
+
+.aside-img .social-btns {
+  align-items: center;
+  justify-self: center;
+}
+
+.fa-facebook:hover {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter:hover {
+  background-color: #00aced;
+  color: white;
+}
+
+.fa-instagram:hover {
+  color: white;
+  background: #f09433;
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+
+/* Footer */
+
+footer {
+  background-color: #ff7f00;
+  width: 100%;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+footer p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #e3e3e3;
 }
 
 /* Screen */
@@ -220,6 +369,59 @@ header {
 body.menu-open .main-screen {
   pointer-events: auto;
   opacity: 1;
+}
+
+.upload-modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 200px;
+  background-color: rgba(56, 72, 81, 0.5);
+  font-size: 1.2rem;
+}
+
+.file-input-btn {
+  margin-top: 50px;
+}
+
+.close-upload-btn {
+  background-color: rgba(56, 72, 81, 0);
+  border: 0px;
+  align-self: flex-end;
+}
+
+.facebook-share-modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+  background-color: rgba(56, 72, 81, 0.302);
+}
+
+.btn-facebook {
+  position: fixed;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: #3b5998;
+  margin-left: 35px;
+}
+
+.close-modal {
+  cursor: pointer;
+  border: 0px;
+  align-self: flex-end;
+  background-color: rgba(56, 72, 81, 0.302);
 }
 
 /* Helpers */
@@ -260,18 +462,17 @@ body.menu-open .main-screen {
 
 /* Media Queries */
 
-@media (max-width: 450px) {
+@media (max-width: 750px) {
   .header-content ul {
     position: fixed;
     top: 0;
     right: 0;
     flex-direction: column;
-    background-color: rgba(164, 107, 32, 0.9);
+    background-color: rgba(255, 145, 0, 0.9);
     height: 100vh;
     border-inline-start: 2px solid #b69a9a;
     width: 150px;
     transform: translateX(100%);
-
     transition: transform 0.6s, box-shadow 0.6s;
   }
   body.menu-open .header-content ul {
@@ -279,21 +480,14 @@ body.menu-open .main-screen {
     transform: translateX(0);
   }
   .header-content ul a {
-    border: 1px white solid;
+    color: #fff;
   }
   .header-content ul a:hover {
-    background-color: rgba(141, 111, 55, 0.747);
+    background-color: rgba(229, 200, 146, 0.5);
   }
 }
 
 @media (min-width: 450px) {
-  .btn-menu {
-    display: none;
-  }
-  .header-content ul {
-    display: flex;
-    height: 100%;
-  }
   .main-layout {
     max-width: 450px;
   }
@@ -301,18 +495,71 @@ body.menu-open .main-screen {
     max-width: 450px;
   }
 
-  .header-content ul li a:hover {
-    color: #040a2c;
-    box-shadow: inset 0px -6px 0 #040a2c;
+  .canvas-container {
+    width: 300px;
+    align-self: center;
+    justify-self: center;
   }
 
-  .canvas-container {
+  .editor-layout button {
+    font-weight: 900;
+    width: 40px;
+    height: 40px;
+  }
+
+  .download-link {
+    font-weight: 900;
+    width: 40px;
+    height: 40px;
+  }
+  .about-me-layout {
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .about-me-layout img {
+    width: 200px;
+    height: 200px;
+    margin-top: 0px;
+  }
+
+  .about-me-layout .my-image {
+    background-color: #ff7f00;
     height: 300px;
     width: 300px;
+  }
+  .about-me-layout .aside-img {
+    width: 50%;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 750px) {
+  .btn-menu {
+    display: none;
+  }
+  .header-content ul {
+    display: flex;
+    height: 100%;
+  }
+  .header-content ul li a .current {
+    color: inherit;
+    justify-content: center;
+  }
+
+  .header-content ul li {
+    color: #ffff;
+  }
+
+  .current {
+    color: #040a2c;
+    box-shadow: inset 0px -6px 0 #040a2c;
+  }
+
+  .header-content ul li a:hover {
+    color: #040a2c;
+    box-shadow: inset 0px -6px 0 #040a2c;
+  }
   .main-layout {
     max-width: 750px;
   }
@@ -332,6 +579,44 @@ body.menu-open .main-screen {
   .editor-layout {
     width: 50%;
   }
+  .editor-layout button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .download-link {
+    width: 50px;
+    height: 50px;
+  }
+
+  .stickers-container ul {
+    height: 100px;
+    align-items: center;
+  }
+  .canvas-container {
+    width: 350px;
+  }
+  .about-me-layout img {
+    width: 300px;
+    height: 300px;
+    margin-top: 0px;
+  }
+  .header-buttom-layout {
+    gap: 100px;
+    flex-direction: row;
+  }
+
+  .upload-modal {
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
+  }
+
+  .keyWords-div {
+    padding-left: 20px;
+  }
 }
 
 @media (min-width: 920px) {
@@ -342,8 +627,16 @@ body.menu-open .main-screen {
     max-width: 920px;
   }
   .canvas-container {
-    height: 350px;
-    width: 350px;
+    width: 400px;
+  }
+  .editor-layout button {
+    width: 55px;
+    height: 55px;
+  }
+
+  .download-link {
+    width: 55px;
+    height: 55px;
   }
 }
 
@@ -353,5 +646,20 @@ body.menu-open .main-screen {
   }
   .header-content {
     max-width: 1200px;
+  }
+  .editor-layout button {
+    width: 65px;
+    height: 65px;
+    margin: 10px;
+  }
+
+  .download-link {
+    width: 65px;
+    height: 65px;
+    margin: 10px auto;
+  }
+
+  .canvas-container {
+    width: 500px;
   }
 }
