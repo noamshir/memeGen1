@@ -120,6 +120,12 @@ function createMeme(id = 0) {
   };
 }
 
+function setAllLinesSize(size) {
+  gMeme.lines.forEach((line) => {
+    line.size = size;
+  });
+}
+
 function setMemeStickers(sticker, id, x, y) {
   if (id === 0) gMeme.stickers = [];
   var sticker = {
@@ -256,10 +262,12 @@ function addLineToMeme(elCanvas) {
   var lines = gMeme.lines;
   var elFont = document.getElementById("select-font");
   var font = elFont.value;
+  var width = document.body.offsetWidth + 16;
+  var size = width > 450 ? 30 : 20;
   if (lines.length === 1) {
     lines.push({
       txt: "Enter Text",
-      size: 30,
+      size: size,
       align: "center",
       color: "white",
       pos: {
@@ -271,7 +279,7 @@ function addLineToMeme(elCanvas) {
   } else {
     lines.push({
       txt: "Enter Text",
-      size: 30,
+      size: size,
       align: "center",
       color: "white",
       pos: {

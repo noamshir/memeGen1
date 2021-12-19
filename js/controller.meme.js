@@ -11,6 +11,7 @@ var gImageCurr;
 var gUploadedImage;
 var gIsUploaded = false;
 var gTouchEvs = [["touchstart", "touchmove", "touchend"]];
+var gcurrFontSize = 30;
 
 function initMemes(id, flag = false) {
   var elCurrents = document.querySelectorAll(".current");
@@ -105,7 +106,7 @@ function darwLines(ctx) {
     count = 0;
     meme.stickers.forEach((sticker) => {
       ctx.lineWidth = 2;
-      ctx.font = "30px Imapact";
+      ctx.font = gcurrFontSize + "px Imapact";
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
       ctx.strokeStyle = "black";
@@ -121,12 +122,6 @@ function darwLines(ctx) {
   }
 }
 
-// function renderUploadEditor() {
-//   var img = new Image();
-//   img.src = "img/upload-image-1.jpeg";
-//   gImage = img;
-//   initUpload();
-// }
 
 function onImgInput(ev) {
   loadImageFromInput(ev, renderUpload);
@@ -359,13 +354,12 @@ function getEvPos(ev) {
 }
 
 function resizeCanvas() {
-  // console.log(gImageCurr.width);
-  // console.log(gImageCurr.height);
   var elGallery = document.querySelector(".section-editor");
   if (!elGallery.classList.contains("close")) {
     var virtualCanvas = document.createElement("canvas");
     var virtualCtx = virtualCanvas.getContext("2d");
     var elCanvasContainer = document.querySelector(".canvas-container");
+    var width = document.body.offsetWidth + 16;
     if (!gIsUploaded) {
       var height =
         (gImageCurr.height * elCanvasContainer.offsetWidth) / gImageCurr.width;
@@ -374,7 +368,13 @@ function resizeCanvas() {
         (gUploadedImage.height * elCanvasContainer.offsetWidth) /
         gUploadedImage.width;
     }
-    // elCanvasContainer.style.height = elCanvasContainer.offsetWidth + "px";
+    if (width < 450) {
+      setAllLinesSize(20);
+      gcurrFontSize = 20;
+    } else {
+      setAllLinesSize(30);
+      gcurrFontSize = 30;
+    }
     elCanvasContainer.style.height = height + "px";
     virtualCanvas.height = elCanvasContainer.offsetHeight;
     virtualCanvas.width = elCanvasContainer.offsetWidth;

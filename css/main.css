@@ -245,7 +245,6 @@ header {
 
 .canvas-container {
   width: 100%;
-  align-self: center;
   margin: 10px auto;
 }
 
@@ -594,7 +593,7 @@ body.menu-open .main-screen {
     align-items: center;
   }
   .canvas-container {
-    width: 350px;
+    width: 45%;
   }
   .about-me-layout img {
     width: 300px;
@@ -626,9 +625,6 @@ body.menu-open .main-screen {
   .header-content {
     max-width: 920px;
   }
-  .canvas-container {
-    width: 400px;
-  }
   .editor-layout button {
     width: 55px;
     height: 55px;
@@ -657,9 +653,5 @@ body.menu-open .main-screen {
     width: 65px;
     height: 65px;
     margin: 10px auto;
-  }
-
-  .canvas-container {
-    width: 500px;
   }
 }
